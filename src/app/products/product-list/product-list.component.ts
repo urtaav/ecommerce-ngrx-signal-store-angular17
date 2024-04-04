@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { ProductComponent } from '../product/product.component';
 import { Product } from '../../core/models/Product';
 import { NgClass } from '@angular/common';
@@ -17,7 +17,7 @@ import { orderByPricePurePipe } from '../../core/pure-pipes/order-by-price.pure.
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
-export class ProductListComponent  implements OnInit{
+export class ProductListComponent  implements OnInit,OnDestroy{
 
   shop!: { products: Product[], cart: Product[] };
   products:WritableSignal<Product[]> = signal<Product[]>([]);
@@ -42,6 +42,7 @@ export class ProductListComponent  implements OnInit{
         allowSignalWrites: true
     })
   }
+ 
   ngOnInit(): void {
       this.products.set(this.store.shop.products());
   }
@@ -68,4 +69,8 @@ export class ProductListComponent  implements OnInit{
     this.currentPage.set(loc)
   }
 
+  ngOnDestroy(): void {
+    this.store.removeAllFilters()
+  }
+  
 }

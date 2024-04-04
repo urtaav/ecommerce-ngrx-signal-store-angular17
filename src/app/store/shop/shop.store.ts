@@ -40,9 +40,9 @@ export const shopStore = signalStore(
     withComputed(({ shop }) => ({
         cartCount: computed(() => shop.cart().length),
     })),
-    withMethods((store) => ({
+    withMethods((state) => ({
         incrementCartItemQuantity(productId: number): void {
-            const updatedCart: any[] = [...store.shop.cart()];
+            const updatedCart: any[] = [...state.shop.cart()];
             const updatedItemIndex: number = updatedCart.findIndex((item: any) => item.id === productId);
 
             if (updatedItemIndex === -1) {
@@ -51,7 +51,7 @@ export const shopStore = signalStore(
             }
 
             if (updatedCart[updatedItemIndex].quantity > 9) {
-                patchState(store, { shop: { cart: store.shop.cart(), products: store.shop.products() } });
+                patchState(state, { shop: { cart: state.shop.cart(), products: state.shop.products() } });
                 return;
             }
 
@@ -60,16 +60,16 @@ export const shopStore = signalStore(
             if (incrementedItem) {
                 incrementedItem.quantity++;
                 updatedCart[updatedItemIndex] = incrementedItem;
-                patchState(store, { shop: { cart: updatedCart, products: store.shop.products() } });
+                patchState(state, { shop: { cart: updatedCart, products: state.shop.products() } });
             }
 
 
         },
         decrementCartItemQuantity(productId: number) {
-            const updatedCart: any[] = [...store.shop.cart()];
+            const updatedCart: any[] = [...state.shop.cart()];
             const updatedItemIndex: number = updatedCart.findIndex((item: any) => item.id === productId);
             if (updatedCart[updatedItemIndex].quantity < 2) {
-                patchState(store, { shop: { cart: store.shop.cart(), products: store.shop.products() } });
+                patchState(state, { shop: { cart: state.shop.cart(), products: state.shop.products() } });
                 return;
             }
 
@@ -80,11 +80,11 @@ export const shopStore = signalStore(
             if (decrementedItem) {
                 decrementedItem.quantity--;
                 updatedCart[updatedItemIndex] = decrementedItem;
-                patchState(store, { shop: { cart: updatedCart, products: store.shop.products() } });
+                patchState(state, { shop: { cart: updatedCart, products: state.shop.products() } });
             }
         },
         addProductToCart(product: Product) {
-            const updatedCart = [...store.shop.cart()];
+            const updatedCart = [...state.shop.cart()];
             const updatedItemIndex = updatedCart.findIndex(item => item.id === product.id);
 
             if (updatedItemIndex < 0) {
@@ -97,16 +97,19 @@ export const shopStore = signalStore(
                 updatedItem.quantity = updatedItem.quantity ? updatedItem.quantity++ : 0;
                 updatedCart[updatedItemIndex] = updatedItem;
             }
-            patchState(store, { shop: { cart: updatedCart, products: store.shop.products() } })
+            patchState(state, { shop: { cart: updatedCart, products: state.shop.products() } })
         },
         removeProductToCart(id: number) {
-            const updatedCart = [...store.shop.cart()];
+            const updatedCart = [...state.shop.cart()];
             const updatedItemIndex = updatedCart.findIndex(
                 item => item.id === id
             );
 
             updatedCart.splice(updatedItemIndex, 1);
-            patchState(store, { shop: { cart: updatedCart, products: store.shop.products() } })
+            patchState(state, { shop: { cart: updatedCart, products: state.shop.products() } })
+        },
+        removeAllFilters(){
+            patchState(state,{ brandFilter:'',orderBy: ''})
         }
     })),
     withPriceFilterFeature(),
