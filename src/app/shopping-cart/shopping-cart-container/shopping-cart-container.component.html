@@ -1,0 +1,30 @@
+@if (cart) {
+    <div class="container" style="padding-top: 6rem;">
+        <div class="card shopping-cart">
+          <div class="card-header bg-dark ">
+            <i class="fa fa-shopping-cart pr-2" aria-hidden="true"></i>
+            Shopping cart
+            <div class="clearfix"></div>
+          </div>
+          <div class="card-body">
+            @for (cartItem of cart; track $index) {
+                <app-shopping-cart-item  [product]="cartItem"/>
+            }
+            @if (cart.length === 0) {
+                <h2 class="display-4 text-center">
+                    There is no item in cart
+                  </h2>
+            }
+    
+          </div>
+          <div class="card-footer">
+            <div class="pull-right" style="margin: 10px">
+              <div class="pull-right" style="margin: 5px">
+                Total price: <b>{{totalPrice | priceFormatter}}$</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+}
+

@@ -1,0 +1,14 @@
+<aside>
+    <article class="gallery-wrap">
+        <div class="img-big-wrap">
+            <div style="padding: 2rem" #imageContainer><a href="#"><img [src]="currentImage()"
+                        style="width: 100%; height: 100%" /></a>
+            </div>
+        </div>
+        <div class="img-small-wrap">
+            @for (image of images(); track $index;) {
+                 <div class="item-gallery" (click)="changeImage($index)"><img [src]="image" /></div>
+            }
+        </div>
+    </article>
+</aside>

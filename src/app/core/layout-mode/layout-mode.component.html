@@ -1,0 +1,5 @@
+<div class="layout-mode" (click)="changeLayout.emit(len())">
+    @for (i of items; track $index) {
+        <div [ngClass]="{'layout-mode__item--active': isActive}" class="layout-mode__item"></div>
+    }
+</div>

@@ -1,0 +1,10 @@
+<div class="owl-dots">
+    @for (i of dots(); track $index) {
+
+        <button
+      (click)="changeItem.emit(i)"
+      [class.active]="activeItem() === i"
+      class="owl-dot" role="button">
+    </button>
+    }
+  </div>

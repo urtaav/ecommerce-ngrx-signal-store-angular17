@@ -1,0 +1,20 @@
+
+@if (brandItemsCount) {
+    <div class="card mb-3">
+        <div class="card-header">
+          <h3>Brands</h3>
+        </div>
+        <ul class="list-group">
+            @for (brand of brands; track $index) {
+                <li class="list-group-item">
+                    <label class="custom-checkbox text-capitalize"> {{brand}} ({{brandItemsCount[brand]}})
+                      <input type="checkbox"
+                             [name]="brand"
+                             class="custom-checkbox__input" (input)="onChangeSelectBox($event)"/>
+                      <span class="custom-checkbox__span"></span>
+                    </label>
+                  </li>
+            }
+        </ul>
+      </div>
+}
