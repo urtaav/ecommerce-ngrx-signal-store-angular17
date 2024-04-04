@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+#creditos a quien corresponda
+
+Demo app
+![image](https://github.com/urtaav/ecommerce-ngrx-signal-store-angular17/assets/30246385/71b99e4b-b567-4433-8bfc-550026fd3faf)
