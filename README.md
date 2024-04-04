@@ -1,4 +1,4 @@
-# PostNgrxAngular17
+# Angular17
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
 
@@ -28,5 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 #creditos a quien corresponda
 
-Demo app
+#Demo app
 ![image](https://github.com/urtaav/ecommerce-ngrx-signal-store-angular17/assets/30246385/71b99e4b-b567-4433-8bfc-550026fd3faf)
+
+![image](https://github.com/urtaav/ecommerce-ngrx-signal-store-angular17/assets/30246385/2379f71e-9107-4d74-92a8-2bcc6f89c240)
+
+
+![image](https://github.com/urtaav/ecommerce-ngrx-signal-store-angular17/assets/30246385/076c2e9c-e429-419a-998b-2a72348cebc8)
